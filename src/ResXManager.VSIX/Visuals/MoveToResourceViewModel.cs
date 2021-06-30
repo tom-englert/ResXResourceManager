@@ -9,7 +9,7 @@
     using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Text;
-
+    using Diacritics.Extensions;
     using EnvDTE;
 
     using PropertyChanged;
@@ -181,7 +181,9 @@
 
             var makeUpper = true;
 
-            foreach (var c in text)
+            var textNonDiacritics = text.RemoveDiacritics();
+
+            foreach (var c in textNonDiacritics)
             {
                 if (!IsCharValidForSymbol(c))
                 {
